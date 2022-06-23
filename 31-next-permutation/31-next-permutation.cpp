@@ -26,6 +26,6 @@ public:
         }
         
         swap(nums[ptr1],nums[ptr2]);
-        sort(nums.begin()+ptr1+1,nums.end());
+        reverse(nums.begin()+ptr1+1,nums.end());
     }
 };
