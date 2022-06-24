@@ -1,16 +1,29 @@
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        int maxprofit=0,minbuy=prices[0];
         int n=prices.size();
-        int prevprofit=0,curprofit=0;
+        vector<int> dp(n);
+        dp[0]=0;
+        int minbuy=prices[0];
+        int maxprofit=INT_MIN;
         
         for(int i=1;i<n;i++)
         {
+            int profit=prices[i]-minbuy;
+            if(profit<=dp[i-1])
+            {
+                dp[i]=dp[i-1];
+            }
+            else
+            {
+                dp[i]=profit;
+            }
             minbuy=min(minbuy,prices[i]);
-            curprofit=max(prevprofit,prices[i]-minbuy);
-            prevprofit=curprofit;
         }
-        return curprofit;;
+        for(int i=0;i<n;i++)
+        {
+            cout<<dp[i]<<" ";
+        }cout<<endl;
+        return dp[n-1];
     }
 };
