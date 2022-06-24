@@ -20,10 +20,7 @@ public:
             }
             minbuy=min(minbuy,prices[i]);
         }
-        for(int i=0;i<n;i++)
-        {
-            cout<<dp[i]<<" ";
-        }cout<<endl;
+        
         return dp[n-1];
     }
 };
