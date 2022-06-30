@@ -10,7 +10,7 @@ public:
         if(sum%2) return false;
         int target=sum/2;
         
-        vector<vector<bool>> dp(n+1,vector<bool>(target+1,0));
+        vector<vector<bool>> dp(n,vector<bool>(target+1,0));
         
         for(int i=0;i<n;i++)
         {
@@ -22,19 +22,19 @@ public:
         }
         
         
-        for(int i=1;i<=n;i++)
+        for(int i=1;i<n;i++)
         {
             for(int j=1;j<=target;j++)
             {
                 bool nottake=dp[i-1][j];
                 
                 bool take=false;
-                if(nums[i-1]<=j)
-                    take=dp[i-1][j-nums[i-1]];
+                if(nums[i]<=j)
+                    take=dp[i-1][j-nums[i]];
                 dp[i][j]=take | nottake;
             }
         }
         
-        return dp[n][target];
+        return dp[n-1][target];
     }
 };
