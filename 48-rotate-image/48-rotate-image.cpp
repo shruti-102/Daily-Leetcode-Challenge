@@ -13,13 +13,7 @@ public:
             }
         }
         
-        for(int i=0;i<n;i++)
-        {
-            for(int j=0;j<m;j++)
-            {
-                cout<<matrix[i][j]<<" ";
-            }cout<<endl;
-        }
+        
         //mirror image
         cout<<endl;
         for(int j=0;j<m/2;j++)
@@ -29,12 +23,6 @@ public:
                 swap(matrix[i][j],matrix[i][m-j-1]);
             }
         }
-        for(int i=0;i<n;i++)
-        {
-            for(int j=0;j<m;j++)
-            {
-                cout<<matrix[i][j]<<" ";
-            }cout<<endl;
-        }
+        
     }
 };
