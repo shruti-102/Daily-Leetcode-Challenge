@@ -12,7 +12,7 @@ public:
             {
                 end=max(end,intervals[i][1]);
             }
-            if(intervals[i][0]>end)
+            else
             {
                 res.push_back({start,end});
                 start=intervals[i][0];
