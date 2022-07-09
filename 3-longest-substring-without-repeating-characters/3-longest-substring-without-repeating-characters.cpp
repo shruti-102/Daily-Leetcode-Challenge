@@ -1,22 +1,20 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        vector <int> mp(256,-1);
-        int n=s.size();
-        if(n==0 || n==1) return n;
-        int left=-1,maxlen=0;
-        for(int right=0;right<n;right++)
-        {
-            if(mp[s[right]] > left)  //means that repeated element is in the range[left,right]
-            {
-                left=mp[s[right]];
-                
-            }
-            
-            mp[s[right]]=right;
-            maxlen=max(maxlen,right-left);
-        }
-        
-        return maxlen;
+        vector < int > mpp(256, -1);
+
+      int left = 0, right = 0;
+      int n = s.size();
+      int len = 0;
+      while (right < n) {
+        if (mpp[s[right]] != -1)
+          left = max(mpp[s[right]] + 1, left);
+
+        mpp[s[right]] = right;
+
+        len = max(len, right - left + 1);
+        right++;
+      }
+      return len;
     }
 };
