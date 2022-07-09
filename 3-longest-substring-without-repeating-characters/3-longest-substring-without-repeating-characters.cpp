@@ -1,18 +1,22 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        vector <int> mp(256,-1);
-        int start=-1,maxlen=0;
-        if(s.length()==1)
-            return 1;
-        for(int i=0;i<s.length();i++)
+       int n=s.size();
+        unordered_set<int> hashset;
+        int left=0;
+        int maxlen=0;
+        for(int right=0;right<n;right++)
         {
-            if(mp[s[i]]>start)
+            if(hashset.count(s[right]))
             {
-                start=mp[s[i]];
+                while(left<right && hashset.find(s[right])!=hashset.end()) //jb tk wo repeated character remove n ho jata
+                {
+                    hashset.erase(s[left]);
+                    left++;
+                }
             }
-            mp[s[i]]=i;
-            maxlen=max(maxlen,i-start);
+            hashset.insert(s[right]);
+            maxlen=max(maxlen,right-left+1);
         }
         return maxlen;
     }
