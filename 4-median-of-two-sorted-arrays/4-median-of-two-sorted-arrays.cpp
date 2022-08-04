@@ -1,79 +1,46 @@
 class Solution {
 public:
-    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-        int n1=nums1.size();
-        int n2=nums2.size();
+    double findMedianSortedArrays(vector<int>& ar1, vector<int>& ar2) {
+        int n=ar1.size();
+        int m=ar2.size();
         double median=0;
         
-        if(n1==0)
+        int i = 0; 
+        int j = 0; /* Current index of input array ar2[] */
+        int count;
+        int m1 = -1, m2 = -1;
+        /*loop till (m+n)/2*/
+        for (count = 0; count <= (m + n)/2; count++)
         {
-            int mid=n2/2;
-            if(n2%2==0) median=(nums2[mid-1]+nums2[mid])/2.0;
-            else median=double(nums2[mid]);
-            
-            return median;
-        }
-        else if(n2==0)
-        {
-            int mid=n1/2;
-            if(n1%2==0) median=(nums1[mid-1]+nums1[mid])/2.0;
-            else median=double(nums1[mid]);
-            
-            return median;
-        }
-        int n=n1+n2;
-        int left=n/2;
-        
-        int i=0,j=0;
-        while(i<n1 && j<n2 && left--)
-        {
-            if(nums1[i]<=nums2[j]) i++;
-            else j++;
-        }
-        //cout<<i<<" "<<j;
-        
-        if(i==n1)
-        {
-            while(left-- && j<n2)
+            //store (n+m)/2-1 in m2
+            m2=m1;
+            if(i != n && j != m)
             {
-                j++;
+                m1 = (ar1[i] > ar2[j]) ? ar2[j++] : ar1[i++];
+            }
+            else if(i < n)
+            {
+                m1 = ar1[i++];
+            }
+            // for case when j<m,
+            else
+            {
+                m1 = ar2[j++];
             }
         }
-        
-        else if(j==n2)
-        {
-            while(left-- && i<n1)
-            {
-                i++;
-            }
+        // Since there are (n+m) elements,
+        // There are following two cases
+        // if n+m is odd then the middle
+        // index is median i.e. (m+n)/2
+        // other wise median will be average of elements
+        // at index ((m+n)/2 - 1) and (m+n)/2
+        // in the array obtained after merging ar1 and ar2
+        if((m + n) % 2 == 1){
+            return double(m1);
         }
-        
-         int l1,r1,l2,r2;
-         if(i>=n1) r1=INT_MAX;
-         else r1=nums1[i];
-        
-         if(j>=n2) r2=INT_MAX;
-         else r2=nums2[j];
-        
-         if(i==0) l1=0;
-         else l1=nums1[i-1];
-        
-         if(j==0) l2=0;
-         else l2=nums2[j-1];
-       
-        cout<<l1<<" "<<l2<<endl;
-        cout<<r1<<" "<<r2;
-        if(n%2==0)  //even
-        {
-           
-            int x=max(l1,l2);
-            int y=min(r1,r2);
-            median=(x+y)/2.0;
+        else{
+            return double(m1+m2)/2.0;
         }
-        else
-        {
-            median=double(min(r1,r2));
+
         }
-        return median;
-    }
 };
