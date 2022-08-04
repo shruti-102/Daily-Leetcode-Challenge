@@ -1,32 +1,35 @@
 class Solution {
-    pair<int, int> isPalin(const string& s, int l, int r) {
-        while (l >= 0 && r < s.size() && s[l] == s[r]) {
-            --l;
-            ++r;
-        }
-                
-        return {l, r};
-    }
-
-    
 public:
     string longestPalindrome(string s) {
-        pair<int, int> result;
-        
-        for (int i = 0, j = 0; i < s.size();) {
-            auto [l, r] = isPalin(s, i, j);
-            if (r - l > result.second - result.first){
-                result.first = l;
-                result.second = r;
+        int n=s.size();
+        vector<vector<int>>dp(s.size(),vector<int>(n,0));
+        int start=0,len=0;
+        for(int gap=0;gap<n;gap++)
+        {
+            for(int i=0,j=gap;j<n;i++,j++)
+            {
+                if(gap==0)
+                {
+                    start=i;
+                    len=1;
+                    dp[i][j]=1;
+                }
+                else if(gap==1 && s[i]==s[j])
+                {
+                    dp[i][j]=1;
+                    start=i;
+                    len=2;
+                }
+                else
+                {
+                    if(s[i]==s[j] && dp[i+1][j-1]==1){
+                        dp[i][j]=1;
+                        start=i;
+                        len=j-i+1;
+                    }
+                }
             }
-            
-            if (i == j)
-                ++j;
-            else
-                ++i;
-            
         }
-        
-        return s.substr(result.first + 1, result.second - result.first - 1);
+        return s.substr(start,len);
     }
 };
