@@ -42,7 +42,7 @@ class Solution {
         }
 
         int countVowelPermutation(int n) {
-            m['c'] = {'a','e','i','o','u'};
+            m['z'] = {'a','e','i','o','u'};
             m['a'] = {'e'};
             m['e'] = {'a','i'};
             m['i'] = {'a','e','o','u'};
@@ -50,7 +50,7 @@ class Solution {
             m['u'] = {'a'};
 
             vector<vector<long long> > dp(n+1,vector<long long>(27,-1));
-            return helper(n , 1 , 'c', dp);
+            return helper(n , 1 , 'z', dp);
 
     }
 };
