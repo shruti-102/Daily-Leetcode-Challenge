@@ -12,7 +12,7 @@ public:
             if(strs[0][i]==strs[1][i]) prefix+=strs[1][i];
             else break;
         }
-        cout<<prefix;
+        //cout<<prefix;
         for(int i=2;i<strs.size();i++)
         {
             for(int j=0;j<prefix.size();j++)
@@ -20,7 +20,7 @@ public:
                 if(strs[i][j]!=prefix[j])
                 {
                     prefix=strs[i].substr(0,j);
-                    cout<<"%"<<prefix<<" ";
+                    //cout<<"%"<<prefix<<" ";
                     break;
                 }
                 
