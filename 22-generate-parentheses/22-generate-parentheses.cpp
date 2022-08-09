@@ -1,30 +1,22 @@
 class Solution {
 public:
     vector<string> ans;
-    void generater(int n,int s,string parentheses,int indx)
+    void helper(string str,int n,int sum,int indx)
     {
-        if(s>n  || s<=-1)
-        {
-            
+        if(sum>n || sum<=-1) return;
+        
+        if(indx==n*2)
+        { 
+          if(sum==0) ans.push_back(str);
             return;
         }
-        if(indx==2*n){
-            if(s==0)
-            {
-                ans.push_back(parentheses);
-                return;
-            }
-            else
-            {
-                return;
-            }
-        }
         
-        generater(n,s+1,parentheses+'(',indx+1);
-        if(s>0) generater(n,s-1,parentheses+')',indx+1);
+        helper(str+'(',n,sum+1,indx+1);
+        if(sum>0) helper(str+')',n,sum-1,indx+1);
     }
     vector<string> generateParenthesis(int n) {
-        generater(n,0,"",0);
+        int sum=0,indx=0;
+        helper("",n,sum,indx);
         return ans;
     }
 };
