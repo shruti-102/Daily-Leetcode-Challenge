@@ -3,7 +3,7 @@ public:
     vector<string> ans;
     void generater(int n,int s,string parentheses,int indx)
     {
-        if(s>n && s<=-1)
+        if(s>n  || s<=-1)
         {
             
             return;
