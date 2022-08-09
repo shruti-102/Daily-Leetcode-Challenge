@@ -3,7 +3,7 @@ public:
     vector<string> ans;
     void helper(string str,int n,int sum,int indx)
     {
-        if(sum>n || sum<=-1) return;
+       // if(sum>n || sum<=-1) return;
         
         if(indx==n*2)
         { 
