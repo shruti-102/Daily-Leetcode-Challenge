@@ -18,6 +18,7 @@ public:
         
         if(ptrleft!=NULL && ptrright!=NULL) return root;
         if(ptrleft!=NULL) return ptrleft;
+        if(ptrleft==NULL && ptrright==NULL) return NULL;
         else return ptrright;
             
     }
