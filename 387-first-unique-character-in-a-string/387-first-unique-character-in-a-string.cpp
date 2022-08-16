@@ -14,10 +14,6 @@ public:
             }
         }
         
-        for(auto it: mp)
-        {
-            cout<<it.first<<": "<<it.second.first<<" "<<it.second.second<<endl;
-        }
         int minindx=s.size();
         for(auto it: mp)
         {
