@@ -34,7 +34,7 @@ public:
         for(int i=2;i<=n;i++)
         {
             cur=count(prev);
-            cout<<cur<<endl;
+            //cout<<cur<<endl;
             prev=cur;
         }
         return cur;
