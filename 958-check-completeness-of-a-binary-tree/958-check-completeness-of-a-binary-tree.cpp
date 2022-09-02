@@ -11,20 +11,28 @@
  */
 class Solution {
 public:
-    
-
-
-bool isCompleteTree(TreeNode* root) {
-        vector<TreeNode*> bfs;
-        bfs.push_back(root);
-        int i = 0;
-        while (i < bfs.size() && bfs[i]) {
-            bfs.push_back(bfs[i]->left);
-            bfs.push_back(bfs[i]->right);
-            i++;
+    bool isCompleteTree(TreeNode* root) {
+        bool value = false;
+        if(root==NULL)
+            return true;
+        queue<TreeNode *> q;
+        q.push(root);
+        while(q.size()>0)
+        {
+            TreeNode *p = q.front();
+            q.pop();
+            if(p==NULL)
+            {
+                value=true;
+            }
+            else
+            {
+                if(value)
+                    return false;
+                q.push(p->left);
+                q.push(p->right);
+            }
         }
-        while (i < bfs.size() && !bfs[i])
-            i++;
-        return i == bfs.size();
+        return true;
     }
-    };
+};
