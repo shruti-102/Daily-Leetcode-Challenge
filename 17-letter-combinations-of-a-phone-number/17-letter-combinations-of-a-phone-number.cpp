@@ -1,20 +1,20 @@
 class Solution {
 public:
-    void helper(string digit,int indx,unordered_map<int,string>& mp,vector<string>& res,string str)
+    void helper(string digit,int i,unordered_map<int,string>& mp,vector<string>& res,string str)
     {
-        if(indx>=digit.size())
+        if(i==digit.size())
         {
             res.push_back(str);
             return;
         }
         
-        int key=digit[indx]-'0';
+        int key=digit[i]-'0';
         string value=mp[key];
         
-        for(int i=0;i<value.size();i++)
+        for(int k=0;k<value.size();k++)
         {
-            str+=value[i];
-            helper(digit,indx+1,mp,res,str);
+            str+=value[k];
+            helper(digit,i+1,mp,res,str);
             str.pop_back();
         }
         return;
