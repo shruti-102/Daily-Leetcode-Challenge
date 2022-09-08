@@ -1,25 +1,27 @@
 class Solution {
 public:
-    void helper(string digit,int i,unordered_map<int,string>& mp,vector<string>& res,string str)
+    vector<string> res;
+    void solve(int i,string digits,unordered_map<int,string>& mp,string str)
     {
-        if(i==digit.size())
+        if(i==digits.size())
         {
             res.push_back(str);
             return;
         }
         
-        int key=digit[i]-'0';
+        int key=digits[i]-'0';
         string value=mp[key];
         
         for(int k=0;k<value.size();k++)
         {
             str+=value[k];
-            helper(digit,i+1,mp,res,str);
+            solve(i+1,digits,mp,str);
             str.pop_back();
         }
         return;
     }
     vector<string> letterCombinations(string digits) {
+        if(digits=="") return {};
         unordered_map<int,string> mp;
         mp[2]="abc";
         mp[3]="def";
@@ -30,10 +32,7 @@ public:
         mp[8]="tuv";
         mp[9]="wxyz";
         
-        vector<string> res;
-        if(digits.size()==0) return res;
-        
-        helper(digits,0,mp,res,"");
+        solve(0,digits,mp,"");
         return res;
     }
 };
