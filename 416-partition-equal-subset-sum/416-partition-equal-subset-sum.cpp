@@ -7,7 +7,9 @@ public:
         {
             sum+=nums[i];
         }
-        if(sum%2) return false;
+        
+        if(sum%2!=0) return false;
+        
         int target=sum/2;
         
         vector<vector<bool>> dp(n,vector<bool>(target+1,0));
@@ -16,25 +18,22 @@ public:
         {
             dp[i][0]=true;
         }
-         for(int j=1;j<target;j++)
-        {
-            dp[0][j]=false;
-        }
-        
         
         for(int i=1;i<n;i++)
         {
             for(int j=1;j<=target;j++)
             {
                 bool nottake=dp[i-1][j];
-                
                 bool take=false;
-                if(nums[i]<=j)
+                
+                if(j>=nums[i])  //bda target
+                {
                     take=dp[i-1][j-nums[i]];
+                }
                 dp[i][j]=take | nottake;
-            }
+                }
         }
         
-        return dp[n-1][target];
+       return dp[n-1][target];
     }
 };
