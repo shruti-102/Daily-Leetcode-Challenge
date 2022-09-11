@@ -1,6 +1,6 @@
 class Solution {
 public:
-    
+    vector<vector<string>> res;
     
     bool ispallindrome(string s,int i,int j)
     {
@@ -12,7 +12,7 @@ public:
         }
         return true;
     }
-    void solve(int i,string s,vector<string>& part,vector<vector<string>>& res)
+    void solve(int i,string s,vector<string>& part)
     {
         if(i==s.size())
         {
@@ -24,9 +24,9 @@ public:
         {
             
             if(ispallindrome(s,i,k)){
-                cout<<s.substr(i,k-i+1)<<" ";
+                //cout<<s.substr(i,k-i+1)<<" ";
                 part.push_back(s.substr(i,k-i+1));
-                solve(k+1,s,part,res);
+                solve(k+1,s,part);
                 part.pop_back();
             }
         }
@@ -34,8 +34,7 @@ public:
     }
     vector<vector<string>> partition(string s) {
         vector<string> part;
-        vector<vector<string>> res;
-        solve(0,s,part,res);
+        solve(0,s,part);
         return res;
     }
 };
