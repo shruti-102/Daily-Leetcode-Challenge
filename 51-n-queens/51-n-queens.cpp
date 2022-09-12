@@ -1,6 +1,7 @@
 class Solution {
 public:
-    bool possible(int row,int col,vector<string>& board,int n)
+    
+    bool possible(vector<string>& board,int row,int col,int n)
     {
         int tempr=row;
         int tempc=col;
@@ -27,42 +28,35 @@ public:
         }
         return true;
     }
-    void solve(int n,vector<string>& board,vector<vector<string>>& ans,int col)
+    void solve(vector<string> &board,vector<vector<string>> &ans,int n,int c)
     {
-        if(col==n)
+        if(c==n)
         {
             ans.push_back(board);
             return;
         }
-        //traversing row-wise
-        for(int row=0;row<n;row++)
+        
+        for(int r=0;r<n;r++)
         {
-            if(possible(row,col,board,n))
+            if(possible(board,r,c,n))
             {
-                board[row][col]='Q';
-                solve(n,board,ans,col+1);
-                board[row][col]='.';
+                board[r][c]='Q';
+                solve(board,ans,n,c+1);
+                board[r][c]='.';
             }
         }
     }
     vector<vector<string>> solveNQueens(int n) {
-        vector<vector<string>> ans;
         vector<string> board(n);
         string s(n,'.');
-        
-        //n=4
-        //s=. . . .
+        vector<vector<string>> ans;
         
         for(int i=0;i<n;i++)
         {
             board[i]=s;
         }
-       // board= . . . .
-      //         . . . .
-      //         . . . .
-      //         . . . .
-        // putting queen colomn wise (0->n)
-        solve(n,board,ans,0);
+        
+        solve(board,ans,n,0);
         return ans;
     }
 };
