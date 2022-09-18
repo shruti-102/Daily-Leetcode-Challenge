@@ -18,7 +18,7 @@ public:
             dp[i]=max(l,r);
             leftsum+=dp[i];
         }
-        
+       // for(int i=0;i<n;i++) dp[i]=1;
         int rightsum=0;
         for(int i=n-1;i>=0;i--)
         {
