@@ -2,7 +2,7 @@ class Solution {
 public:
     int candy(vector<int>& ratings) {
         int n=ratings.size();
-        vector<int> dp(n,1);
+        vector<int> dp(n);
         int leftsum=0;
         for(int i=0;i<n;i++)
         {
