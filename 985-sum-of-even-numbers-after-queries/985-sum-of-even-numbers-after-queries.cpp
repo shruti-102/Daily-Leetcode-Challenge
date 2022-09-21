@@ -20,13 +20,12 @@ public:
             if(nums[indx]%2==0) {
                 sumeven-=nums[indx];
                 nums[indx]+=val;
-                if(nums[indx] %2 == 0) sumeven+=nums[indx];
             }
             else
             {
                 nums[indx]+=val;
-                if(nums[indx]%2==0) sumeven+=nums[indx];
             }
+            if(nums[indx] %2 == 0) sumeven+=nums[indx];
             ans.push_back(sumeven);
         }
         return ans;
