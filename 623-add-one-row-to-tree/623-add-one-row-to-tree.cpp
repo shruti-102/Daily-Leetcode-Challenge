@@ -32,7 +32,7 @@ public:
                 if(level==depth-1){
                     int s=q.size();
                     while(s--){
-                        cout<<"##";
+                        //cout<<"##";
                        TreeNode* n= q.front();
                         cout<<n->val;
                         q.pop();
@@ -47,7 +47,7 @@ public:
                         y->right=r; 
                         y->left=NULL;
                     }
-                    cout<<"!";
+                    //cout<<"!";
                     return root;
                 }
                 else{
