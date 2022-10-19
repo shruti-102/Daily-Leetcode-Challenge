@@ -16,20 +16,21 @@ public:
         map<int,vector<string>, greater<int> > mp2;
         
         for(auto it: mp){
-            cout<<it.first<<" ";
-            cout<<it.second<<endl;
+            //cout<<it.first<<" ";
+            //cout<<it.second<<endl;
             mp2[it.second].push_back(it.first);
         }
         
        
         vector<string> ans;
-        
+        int c,sz;
         for(auto it: mp2){
             if(k<=0) break;
             vector<string> temp=it.second;
             sort(temp.begin(),temp.end());
-            int c=0;
-            while(k>0 && c<temp.size()){
+            c=0;
+            sz=temp.size();
+            while(k>0 && c<sz){
                 ans.push_back(temp[c]);
                 c++;
                 k--;
