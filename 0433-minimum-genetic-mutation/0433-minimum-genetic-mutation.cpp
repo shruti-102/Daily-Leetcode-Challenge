@@ -5,9 +5,10 @@ public:
         if(!st.count(end)) return -1;
         queue<string> q;
         q.push(start);
-        int steps=0;
+        int steps=0,n;
+        string t;
         while(!q.empty()){
-            int n=q.size();
+            n=q.size();
             while(n--){
                 string cur=q.front();
                 q.pop();
@@ -15,20 +16,20 @@ public:
                 st.erase(cur);
                 
                 for(int i=0;i<8;i++){
-                   string  t=cur;
-				t[i]='A';
-				if(st.count(t)) q.push(t);
-				t[i]='C';
-				if(st.count(t)) q.push(t);
-				t[i]='G';
-				if(st.count(t)) q.push(t);
-				t[i]='T';
-				if(st.count(t)) q.push(t);
+                    t=cur;
+                    t[i]='A';
+                    if(st.count(t)) q.push(t);
+                    t[i]='C';
+                    if(st.count(t)) q.push(t);
+                    t[i]='G';
+                    if(st.count(t)) q.push(t);
+                    t[i]='T';
+                    if(st.count(t)) q.push(t);
                 }
             }
              steps++;
         }
-        cout<<"&&";
+        //cout<<"&&";
         return -1;
     }
 };
