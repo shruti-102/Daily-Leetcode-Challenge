@@ -10,7 +10,7 @@ public:
             {
                 if(score!=0)
                 {
-                    res.push_back(x);
+                    res+=x;
                 }    
                 //st.push(x);
                 score+=1;
@@ -22,7 +22,7 @@ public:
                 //st.pop();
                 score-=1;
                 if(score!=0)
-                    res.push_back(x);
+                    res+=x;
             }
         }
         return res;
