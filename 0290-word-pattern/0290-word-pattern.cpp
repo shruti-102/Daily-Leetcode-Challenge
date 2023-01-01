@@ -25,24 +25,6 @@ public:
         }
         if(n1!=k+1) return false;
         mp2[str].push_back(k);
-        for(auto it: mp1){
-            cout<<it.first<<"->";
-            vector<int> v=it.second;
-            for(int i=0;i<v.size();i++){
-                cout<<v[i];
-            }cout<<endl;
-        }
-        
-        for(auto it: mp2){
-            cout<<it.first<<"->";
-            vector<int> v=it.second;
-            for(int i=0;i<v.size();i++){
-                cout<<v[i];
-            }cout<<endl;
-        }
-        
-        auto it1=mp1.begin();
-        auto it2=mp2.begin();
         
         for(auto it1: mp1){
             vector<int> v1=it1.second;
